@@ -1,57 +1,56 @@
 # Babelian
-The Babelian is a dictionary of a Terminal.  
-You can search some words/phrases/examples without Browser.  
-This program will help Developers/Students/Teachers, or who is learning 2nd languages.  
-[*glosbe.com*](https://glosbe.com) provides the API of dictionary.  
-Thanks **glosbe**!
+바벨리안은 브라우저 없이 단어/구/예제를 검색할 수 있는 터미널 사전입니다.  
+이 프로그램은 개발자/학생/선생님, 또는 외국어를 공부하는 사람을 도와줍니다.  
+사전 API는 [*glosbe.com*](https://glosbe.com)에서 지원하고 있습니다.  
+**glosbe**에게 고마움을 전합니다.  
 
 ## Index
- - [Translations](#translations)
- - [Features](#features)
- - [Install Guide](#install-guide)
- - [Quick Guide](#quick-guide)
-   - Options
+ - [번역판](#번역판)
+ - [기능](#기능)
+ - [설치하기](#설치하기)
+ - [퀵 가이드](#퀵-가이드)
+   - 옵션
      - [-f LANG](#-f-lang)
      - [-d LANG](#-d-lang)
      - [-n NUM](#-n-num)
      - [-we](#-we)
      - [-op](#-op)
- - [Advanced](#advanced)
- - [License](#license)
+ - [응용하기](#응용하기)
+ - [라이센스](#라이센스)
  - [API](#api)
 
-## Translations
+## 번역판
 - [한국어](./README-ko.md)
 
-## Features
-- Supports all languages of ISO-639-3(also 2) list.
+## 기능
+- ISO-639-3(또는 2)에 있는 언어 코드를 모두 지원합니다.
   - [ISO-639-3 codes.](https://en.wikipedia.org/wiki/List_of_ISO_639-3_codes)
-- Supports Unicode.
-- Supports Examples.
-  - Examples are very important when you are learning 2nd languages.
-- Supports systems.
-  - Linux (tested)
-  - Mac OS X
-- Supports version of Python.
-  - >= Python 2.7 (tested)
-  - >= Python 3.4 (tested)
+- 유니코드를 지원합니다.
+- 예제를 지원합니다.
+  - 외국어를 공부할 때 예제와 같이 학습하는 방법은 굉장히 중요합니다.
+- 지원하는 시스템
+  - 리눅스 (테스트 완료)
+  - 맥 OS X
+- 지원하는 파이썬 버전
+  - >= Python 2.7 (테스트 완료)
+  - >= Python 3.4 (테스트 완료)
 
-## Install Guide
+## 설치하기
 - [English](./docs/INSTALL.md)
 - [한국어](./docs/INSTALL-ko.md)
 
-## Quick-Guide
+## 퀵 가이드
 Usage: td [-h] [-f LANG] [-d LANG] [-n NUM] [-we] [-op] wrd [wrd ...]  
 
 | args | default | description |
 |------|---------|-------------|
-| -h, --help | None | Show help message and exit. |
-| wrd | None | It must have a word at least. |
-| -f LANG | eng | ISO-639-3 code to search in `LANG` from. |
-| -d LANG | eng | ISO-639-3 code to search in `LANG` to. |
-| -n NUM | 3 | A number of print out, three results will print without -n |
-| -we | False | Search with examples. |
-| -op | False | Search only examples. |
+| -h, --help | None | help 메세지 보기. |
+| wrd | None | 최소 하나 이상의 단어가 필요합니다. |
+| -f LANG | eng | 검색에 사용할 단어의 ISO-639-3 code. |
+| -d LANG | eng | 검색할 단어의 ISO-639-3 code. |
+| -n NUM | 3 | 출력할 개수 |
+| -we | False | 예제와 같이 검색하기. |
+| -op | False | 예제만 검색하기. |
 
 ##### -f LANG
 ```shell
@@ -122,8 +121,8 @@ $ td 도서관 -f kor -d tur -n 1 -op
 $
 ```
 
-## Advanced
-Using multi-words.
+## 응용하기
+여러 단어를 이용해서 검색하기.
 ```shell
 $ td please to meet you -d tur -we -n 1
  * Not found phrases.
@@ -133,7 +132,7 @@ $ td please to meet you -d tur -we -n 1
 
 $
 ```
-From Finnish to Russian.
+핀란드어로 러시아어 검색하기.
 ```shell
 $ td kirjasto -f fin -d rus -n 1
 
@@ -142,7 +141,7 @@ $ td kirjasto -f fin -d rus -n 1
 
 $
 ```
-From Turkish to Arabic.
+터키어로 아랍어 검색하기.
 ```shell
 $ td kütüphane -f tur -d ara -n 1
 
@@ -150,7 +149,7 @@ $ td kütüphane -f tur -d ara -n 1
 
 $
 ```
-From Arabic to Deutsch.
+아랍어로 독일어 검색하기.
 ```shell
 $ td مكتبة -f ara -d deu -n 1
 
@@ -159,7 +158,7 @@ $ td مكتبة -f ara -d deu -n 1
 $
 ```
 
-# License
+# 라이센스
 The MIT License (MIT)
 
 # API

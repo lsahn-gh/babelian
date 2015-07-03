@@ -6,18 +6,27 @@ from argparse import ArgumentParser, RawDescriptionHelpFormatter
 import textwrap
 from app import Babelian
 
+__version__ = '1.0'
+__author__ = 'Cryptos An'
+__license__ = 'MIT'
+__copyright__ = '(c) 2015 by {0}'.format(__author__)
+
 
 def main():
     parser = ArgumentParser(
         formatter_class=RawDescriptionHelpFormatter,
         description=textwrap.dedent('''\
-            babelian is a terminal dictionary.
-            https://github.com/cryptosan/babelian
+            The Babelian is a dictionary of a Terminal.
+            You can search some words/phrases/examples without Browser.
+            This program will help Developers/Students/Teachers,
+            or who is learning 2nd languages.
+            'glosbe.com' provides the API of dictionary.
 
-                Support system list.
-                - (O) Linux
-                - (O) Mac OS X
-                - (X) Windows
+                Author.
+                 - Hyun Jun (Cryptos) An
+                 - https://github.com/cryptosan/babelian
+
+                Must have ISO 639-3 code with -f, -d.
             '''))
     parser.add_argument('word', metavar='wrd', type=str, nargs='+',
                         help='A word to search.')
@@ -25,14 +34,27 @@ def main():
                         help='A language code to search from. (default: eng)')
     parser.add_argument('-d', type=str, default='eng', dest='dest_lang',
                         help='A language code to search to. (defualt: eng)')
-    parser.add_argument('-wp', action='store_true', help='Search with phrase.')
-    parser.add_argument('-op', action='store_true', help='Search only phrase.')
-    args = parser.parse_args()
+    parser.add_argument('-n', type=int, default=3, dest='num_for_out',
+                        help='A number of print out. (default: 5)')
+    parser.add_argument('-we', action='store_true',
+                        help='Search with examples. (default: False)')
+    parser.add_argument('-op', action='store_true',
+                        help='Search only examples. (default: False)')
+    try:
+        args = parser.parse_args()
+    except Exception:
+        print('Wrong options!')
+        exit(0)
 
-    if args.op:
-        Babelian.search_phrase(args)
-    else:
-        Babelian.search_word(args)
+    try:
+        if args.op:
+            if args.we:
+                raise Exception(' Don\'t use -we with -op!')
+            Babelian.search_only_examples(args)
+        else:
+            Babelian.search_word(args)
+    except Exception as err:
+        print(err)
 
 if __name__ == '__main__':
     main()
