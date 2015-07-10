@@ -1,7 +1,6 @@
 *.pyc
 build/
 dist/
-docs/
 *.egg-info/
 .idea/
 *.sublime-project
