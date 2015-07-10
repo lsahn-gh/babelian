@@ -16,7 +16,7 @@ $ pip 6.1.1 from /usr/local/lib/python2.7/dist-packages/pip-6.1.1-py2.7.egg (pyt
 ```
 If you can see above, then your Computer has `pip`.  
 The message means that i already have `pip`, and the version is `6.1.1` and Python is `2.7`.  
-So go to [Install babelian](#3.-install-babelian).
+So go to [Install babelian](#3-install-babelian).
 
 #### 2. Install pip
 If you don't have any pip. here is `pip install guide`.  
@@ -32,4 +32,4 @@ then you can see usage, and help.
 
 ## Important!!
 If you get a permission error when you install `babelian`.  
-[Install Babelian](#3.-install-babelian) with root permission!
+[Install Babelian](#3-install-babelian) with root permission!
