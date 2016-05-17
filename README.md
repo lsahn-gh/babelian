@@ -125,7 +125,7 @@ $
 ## Advanced
 Using multi-words.
 ```shell
-$ td please to meet you -d tur -we -n 1
+$ td "please to meet you" -d tur -we -n 1
  * Not found phrases.
  * Examples
   - Native  : Pleased to meet you
