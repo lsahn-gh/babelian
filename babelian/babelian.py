@@ -64,6 +64,45 @@ class Babelian():
             charset = f.info().get_param('charset', 'utf-8')
             print(charset)
 
+    def print_result(self):
+        data = self.get_data()
+        try:
+            if 'tuc' not in data:
+                raise Exception(' * Make sure the Options!')
+        except Exception as err:
+            self.print_err_msg(err)
+        else:
+            self.print_phrases(data['tuc'])
+            if 'examples' in data:
+                self.print_with_examples(data['examples'])
+
+    def print_phrases(self, res):
+        if not len(res) > 0:
+            self.print_err_msg(' * Not found phrases.')
+        else:
+            print('')
+            for items in res[:self.num_for_out]:
+                if 'phrase' in items:
+                    self.wrap_for_phrase(items['phrase']['text'])
+                if 'meanings' in items:
+                    for item in items['meanings'][:self.num_for_out]:
+                        self.wrap_for_meaning(item['text'])
+                print('')
+
+    def print_only_examples(self):
+        data = self.get_data()
+        if 'examples' in data:
+            self.print_with_examples(data['examples'])
+
+    def print_with_examples(self, res):
+        if not len(res) > 0:
+            self.print_err_msg(' * Not found examples.')
+        else:
+            print(''.join([self.YELLOW, ' * Examples', self.ENDC]))
+            for items in res[:self.num_for_out]:
+                self.wrap_for_examples(items)
+                print('')
+
     def get_data(self):
         return self.get_json()
 
@@ -98,31 +137,6 @@ class Babelian():
         else:
             raise Exception('Unknown python version!')
 
-    def print_result(self):
-        data = self.get_data()
-        try:
-            if 'tuc' not in data:
-                raise Exception(' * Make sure the Options!')
-        except Exception as err:
-            self.print_err_msg(err)
-        else:
-            self.print_phrases(data['tuc'])
-            if 'examples' in data:
-                self.print_with_examples(data['examples'])
-
-    def print_phrases(self, res):
-        if not len(res) > 0:
-            self.print_err_msg(' * Not found phrases.')
-        else:
-            print('')
-            for items in res[:self.num_for_out]:
-                if 'phrase' in items:
-                    self.wrap_for_phrase(items['phrase']['text'])
-                if 'meanings' in items:
-                    for item in items['meanings'][:self.num_for_out]:
-                        self.wrap_for_meaning(item['text'])
-                print('')
-
     def wrap_for_phrase(self, item):
         text = '  - Phrase  : '
         print(self.routine_for_align(text, item))
@@ -137,22 +151,7 @@ class Babelian():
             import html
         # Decode HTML escape characters.
         meanings = html.unescape(item)
-        text = '  - Meaning : '
-        print(self.routine_for_align(text, meanings))
-
-    def print_only_examples(self):
-        data = self.get_data()
-        if 'examples' in data:
-            self.print_with_examples(data['examples'])
-
-    def print_with_examples(self, res):
-        if not len(res) > 0:
-            self.print_err_msg(' * Not found examples.')
-        else:
-            print(''.join([self.YELLOW, ' * Examples', self.ENDC]))
-            for items in res[:self.num_for_out]:
-                self.wrap_for_examples(items)
-                print('')
+        print(self.routine_for_align('  - Meaning : ', meanings))
 
     def wrap_for_examples(self, item):
         tags = [
@@ -170,15 +169,13 @@ class Babelian():
         native = phrs \
             .replace(tags[0], self.CYAN) \
             .replace(tags[1], self.ENDC)
-        text = '  - Native  : '
-        print(self.routine_for_align(text, native))
+        print(self.routine_for_align('  - Native  : ', native))
 
     def print_examples_of_second(self, phrs, tags):
         second = phrs \
             .replace(tags[0], self.GREEN) \
             .replace(tags[1], self.ENDC)
-        text = '  - Second  : '
-        print(self.routine_for_align(text, second))
+        print(self.routine_for_align('  - Second  : ', second))
 
     def routine_for_align(self, prefix_txt, item):
         ws = ''.join(['\n', ' ' * len(prefix_txt)])
