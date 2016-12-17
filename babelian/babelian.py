@@ -108,8 +108,7 @@ class Babelian():
 
     def get_json(self):
         try:
-            url = self.make_url()
-            response = urlopen(url)
+            response = urlopen(self.make_url())
         except Exception(' Can\'t load datas, try it again later.') as err:
             self.print_err_msg(err)
         else:
