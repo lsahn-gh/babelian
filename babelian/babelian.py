@@ -42,13 +42,11 @@ class Babelian():
 
     @classmethod
     def search_word(cls, args):
-        babel = cls(args)
-        babel.print_result()
+        cls(args).print_result()
 
     @classmethod
     def search_only_examples(cls, args):
-        babel = cls(args)
-        babel.print_only_examples()
+        cls(args).print_only_examples()
 
     @classmethod
     def test_for_charset(cls, args):
