@@ -137,8 +137,7 @@ class Babelian():
             raise Exception('Unknown python version!')
 
     def wrap_for_phrase(self, item):
-        text = '  - Phrase  : '
-        print(self.routine_for_align(text, item))
+        print(self.routine_for_align('  - Phrase  : ', item))
 
     def wrap_for_meaning(self, item):
         try:
