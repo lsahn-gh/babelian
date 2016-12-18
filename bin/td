@@ -7,7 +7,7 @@ import textwrap
 from babelian import Babelian
 
 __version__ = '1.1'
-__author__ = 'Cryptos An'
+__author__ = 'Yi Soo, An'
 __license__ = 'MIT'
 __copyright__ = '(c) 2015 by {0}'.format(__author__)
 
@@ -16,15 +16,15 @@ def main():
     parser = ArgumentParser(
         formatter_class=RawDescriptionHelpFormatter,
         description=textwrap.dedent('''\
-            The Babelian is a dictionary of a Terminal.
+            Babelian is a dictionary on command line.
             You can search some words/phrases/examples without Browser.
             This program will help Developers/Students/Teachers,
             or who is learning 2nd languages.
             'glosbe.com' provides the API of dictionary.
 
                 Author.
-                 - Hyun Jun (Cryptos) An
-                 - https://github.com/cryptosan/babelian
+                 - Yi Soo, An
+                 - https://github.com/memnoth/babelian
 
                 Must have ISO 639-3 code with -f, -d.
             '''))
@@ -35,7 +35,7 @@ def main():
     parser.add_argument('-d', type=str, default='eng', dest='dest_lang',
                         help='A language code to search to. (defualt: eng)')
     parser.add_argument('-n', type=int, default=3, dest='num_for_out',
-                        help='A number of print out. (default: 5)')
+                        help='A number of print out. (default: 3)')
     parser.add_argument('-we', action='store_true',
                         help='Search with examples. (default: False)')
     parser.add_argument('-op', action='store_true',
