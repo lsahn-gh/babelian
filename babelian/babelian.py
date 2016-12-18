@@ -39,7 +39,6 @@ class Babelian():
         self.num_for_out = args.num_for_out
         self.with_example = args.we
         self.only_example = args.op
-        self.get_python_version()
 
     @classmethod
     def search_word(cls, args):
