@@ -1,7 +1,7 @@
 """
-Copyright (c) Babelian 2015, Hyun Jun (Cryptos) An
+Copyright (c) Babelian 2015-2016, Yi Soo, (Jeff) An
 
-The Babelian is a dictionary of a Terminal.
+Babelian is a dictionary of a Terminal.
 You can search some words/phrases/examples without Browser.
 This program will help Developers/Students/Teachers,
 or who is learning 2nd languages.
