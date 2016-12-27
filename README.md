@@ -1,5 +1,5 @@
 # Babelian
-The Babelian is a dictionary of a Terminal.  
+Babelian is a dictionary of a Terminal.  
 You can search some words/phrases/examples without Browser.  
 This program will help Developers/Students/Teachers, or who is learning 2nd languages.  
 [*glosbe.com*](https://glosbe.com) provides the API of dictionary.  
