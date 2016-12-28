@@ -34,7 +34,7 @@ class Babelian():
 
     def __init__(self, args):
         self.words = args.word
-        self.from_lang = args.from_lang
+        self.src_lang = args.src_lang
         self.dest_lang = args.dest_lang
         self.print_limit = args.print_limit
         self.with_example = args.we
@@ -118,7 +118,7 @@ class Babelian():
         else:
             url = 'https://glosbe.com/gapi/translate?'
         return ''.join([url,
-                        'from={}&'.format(self.from_lang),
+                        'from={}&'.format(self.src_lang),
                         'dest={}&'.format(self.dest_lang),
                         'format=json&',
                         'tm={}&'.format(self.with_example),

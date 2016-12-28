@@ -30,7 +30,7 @@ def main():
             '''))
     parser.add_argument('word', metavar='wrd', type=str, nargs='+',
                         help='A word to search.')
-    parser.add_argument('-f', type=str, default='eng', dest='from_lang',
+    parser.add_argument('-s', type=str, default='eng', dest='src_lang',
                         help='A language code to search from. (default: eng)')
     parser.add_argument('-d', type=str, default='eng', dest='dest_lang',
                         help='A language code to search to. (defualt: eng)')
