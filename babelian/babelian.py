@@ -36,7 +36,7 @@ class Babelian():
         self.words = args.word
         self.from_lang = args.from_lang
         self.dest_lang = args.dest_lang
-        self.num_for_out = args.num_for_out
+        self.print_limit = args.print_limit
         self.with_example = args.we
         self.only_example = args.op
 
@@ -78,11 +78,11 @@ class Babelian():
             self.print_err_msg(' * Not found phrases.')
         else:
             print('')
-            for items in res[:self.num_for_out]:
+            for items in res[:self.print_limit]:
                 if 'phrase' in items:
                     self.wrap_for_phrase(items['phrase']['text'])
                 if 'meanings' in items:
-                    for item in items['meanings'][:self.num_for_out]:
+                    for item in items['meanings'][:self.print_limit]:
                         self.wrap_for_meaning(item['text'])
                 print('')
 
@@ -96,7 +96,7 @@ class Babelian():
             self.print_err_msg(' * Not found examples.')
         else:
             print(''.join([self.YELLOW, ' * Examples', self.ENDC]))
-            for items in res[:self.num_for_out]:
+            for items in res[:self.print_limit]:
                 self.wrap_for_examples(items)
                 print('')
 

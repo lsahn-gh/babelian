@@ -26,7 +26,7 @@ def main():
                  - Yi Soo, (Jeff) An
                  - https://github.com/memnoth/babelian
 
-                Must have ISO 639-3 code with -f, -d.
+                Must use ISO 639-3 code with -f, -d.
             '''))
     parser.add_argument('word', metavar='wrd', type=str, nargs='+',
                         help='A word to search.')
@@ -34,8 +34,8 @@ def main():
                         help='A language code to search from. (default: eng)')
     parser.add_argument('-d', type=str, default='eng', dest='dest_lang',
                         help='A language code to search to. (defualt: eng)')
-    parser.add_argument('-n', type=int, default=3, dest='num_for_out',
-                        help='A number of print out. (default: 3)')
+    parser.add_argument('-n', type=int, default=3, dest='print_limit',
+                        help='Print limitation. (default: 3)')
     parser.add_argument('-we', action='store_true',
                         help='Search with examples. (default: False)')
     parser.add_argument('-op', action='store_true',
