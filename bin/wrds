@@ -6,10 +6,10 @@ from argparse import ArgumentParser, RawDescriptionHelpFormatter
 import textwrap
 from babelian import Babelian
 
-__version__ = '1.1'
-__author__ = 'Yi Soo, An'
+__version__ = '2.0'
+__author__ = 'Yi Soo, (Jeff) An'
 __license__ = 'MIT'
-__copyright__ = '(c) 2015 by {0}'.format(__author__)
+__copyright__ = '(c) 2015-2016 by {0}'.format(__author__)
 
 
 def main():
@@ -23,7 +23,7 @@ def main():
             'glosbe.com' provides the API of dictionary.
 
                 Author.
-                 - Yi Soo, An
+                 - Yi Soo, (Jeff) An
                  - https://github.com/memnoth/babelian
 
                 Must have ISO 639-3 code with -f, -d.
