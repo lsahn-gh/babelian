@@ -22,7 +22,7 @@ try:
 except ImportError:
     from distutils.core import setup
 
-ext_path = os.path.join(os.path.dirname(__file__), 'bin/td')
+ext_path = os.path.join(os.path.dirname(__file__), 'bin/wrds')
 ver_line = [line for line in open(ext_path) if line.startswith('__version__')]
 __ver__ = ver_line[0].split('=')[1].strip().replace('\'', '')
 
@@ -39,7 +39,7 @@ setup(
     include_package_data=True,
     platforms='any',
     packages=['babelian'],
-    scripts=['bin/td'],
+    scripts=['bin/wrds'],
     classifiers=[
         'Environment :: Console',
         'Intended Audience :: Education',
