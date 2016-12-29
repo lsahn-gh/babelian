@@ -112,7 +112,7 @@ class Babelian():
             return json.loads(response.read().decode('utf-8'))
 
     def make_url(self):
-        url = None
+        #url = None
         if self.only_example:
             url = 'https://glosbe.com/gapi/tm?'
         else:
