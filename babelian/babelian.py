@@ -101,9 +101,6 @@ class Babelian():
                 print('')
 
     def get_data(self):
-        return self.get_json()
-
-    def get_json(self):
         try:
             response = urlopen(self.make_url())
         except Exception(' Can\'t load datas, try it again later.') as err:
@@ -112,7 +109,6 @@ class Babelian():
             return json.loads(response.read().decode('utf-8'))
 
     def make_url(self):
-        #url = None
         if self.only_example:
             url = 'https://glosbe.com/gapi/tm?'
         else:
