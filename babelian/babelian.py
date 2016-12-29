@@ -91,13 +91,14 @@ class Babelian():
             self.print_with_examples(data['examples'])
 
     def print_with_examples(self, res):
-        if not len(res) > 0:
-            self.print_err_msg(' * Not found examples.')
-        else:
+        print('')
+        if len(res) > 0:
             print(''.join([self.YELLOW, ' * Examples', self.ENDC]))
             for items in res[:self.print_limit]:
-                self.wrap_for_examples(items)
                 print('')
+                self.wrap_for_examples(items)
+        else:
+            self.print_err_msg(' * Not found examples.')
 
     def get_data(self):
         try:
