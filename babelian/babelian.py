@@ -69,7 +69,7 @@ class Babelian():
     def print_phrases(self, res):
         if len(res) > 0:
             for items in res[:self.print_limit]:
-                print('')
+                blank_line()
                 if 'phrase' in items:
                     self.wrap_for_phrase(items['phrase']['text'])
                 if 'meanings' in items:
@@ -84,11 +84,11 @@ class Babelian():
             self.print_with_examples(data['examples'])
 
     def print_with_examples(self, res):
-        print('')
+        blank_line()
         if len(res) > 0:
             print(''.join([COLOR.YELLOW, ' * Examples', COLOR.ENDC]))
             for items in res[:self.print_limit]:
-                print('')
+                blank_line()
                 self.wrap_for_examples(items)
         else:
             self.print_err_msg(' * Not found examples.')
@@ -165,3 +165,7 @@ class Babelian():
     def get_python_version(self):
         import sys
         return sys.version_info[0]
+
+
+def blank_line():
+    print('')
