@@ -86,7 +86,7 @@ class Babelian():
     def print_with_examples(self, res):
         blank_line()
         if len(res) > 0:
-            print(''.join([COLOR.YELLOW, ' * Examples', COLOR.ENDC]))
+            print(colored_msg(COLOR.YELLOW, ' * Examples'))
             for items in res[:self.print_limit]:
                 blank_line()
                 self.wrap_for_examples(items)
@@ -160,7 +160,7 @@ class Babelian():
         return ''.join([prefix_txt, ws.join(wrap(item, self.WIDTH_OF_TERM))])
 
     def print_err_msg(self, err):
-        print(''.join([COLOR.RED, str(err), COLOR.ENDC]))
+        print(colored_msg(COLOR.RED, str(err)))
 
     def get_python_version(self):
         import sys
@@ -169,3 +169,6 @@ class Babelian():
 
 def blank_line():
     print('')
+
+def colored_msg(color, str):
+    return ''.join([color, str, COLOR.ENDC])
