@@ -74,17 +74,16 @@ class Babelian():
                 self.print_with_examples(data['examples'])
 
     def print_phrases(self, res):
-        if not len(res) > 0:
-            self.print_err_msg(' * Not found phrases.')
-        else:
-            print('')
+        if len(res) > 0:
             for items in res[:self.print_limit]:
+                print('')
                 if 'phrase' in items:
                     self.wrap_for_phrase(items['phrase']['text'])
                 if 'meanings' in items:
                     for item in items['meanings'][:self.print_limit]:
                         self.wrap_for_meaning(item['text'])
-                print('')
+        else:
+            self.print_err_msg(' * Not found phrases.')
 
     def print_only_examples(self):
         data = self.get_data()
