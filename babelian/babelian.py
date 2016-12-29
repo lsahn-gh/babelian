@@ -144,9 +144,7 @@ class Babelian():
         except:
             # Python 3
             import html
-        # Decode HTML escape characters.
-        meanings = html.unescape(item)
-        print(self.routine_for_align('  - Meaning : ', meanings))
+        print(self.routine_for_align('  - Meaning : ', html.unescape(item)))
 
     def wrap_for_examples(self, item):
         phrs_of_native = item['first']
