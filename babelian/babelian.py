@@ -18,17 +18,10 @@ except ImportError:
     from urllib.parse import quote_plus
 import json
 from textwrap import wrap
+from .color import COLOR
 
 
 class Babelian():
-
-    RED = '\033[91m'
-    GREEN = '\033[92m'
-    YELLOW = '\033[93m'
-    BLUE = '\033[94m'
-    PURPLE = '\033[95m'
-    CYAN = '\033[96m'
-    ENDC = '\033[0m'
     DASH = 52
     WIDTH_OF_TERM = 60
 
@@ -93,7 +86,7 @@ class Babelian():
     def print_with_examples(self, res):
         print('')
         if len(res) > 0:
-            print(''.join([self.YELLOW, ' * Examples', self.ENDC]))
+            print(''.join([COLOR.YELLOW, ' * Examples', COLOR.ENDC]))
             for items in res[:self.print_limit]:
                 print('')
                 self.wrap_for_examples(items)
@@ -149,11 +142,11 @@ class Babelian():
             self.print_examples('  - Native  : ', 
                                 phrs_of_native, 
                                 # colors for replacing tags.
-                                self.CYAN, self.ENDC)
+                                COLOR.CYAN, COLOR.ENDC)
         if phrs_of_second is not None:
             self.print_examples('  - Second  : ', 
                                 phrs_of_second, 
-                                self.GREEN, self.ENDC)
+                                COLOR.GREEN, COLOR.ENDC)
 
     def print_examples(self, str, phrs, *colors):
         tags = ['<strong class="keyword">', '</strong>']
@@ -167,7 +160,7 @@ class Babelian():
         return ''.join([prefix_txt, ws.join(wrap(item, self.WIDTH_OF_TERM))])
 
     def print_err_msg(self, err):
-        print(''.join([self.RED, str(err), self.ENDC]))
+        print(''.join([COLOR.RED, str(err), COLOR.ENDC]))
 
     def get_python_version(self):
         import sys
