@@ -149,28 +149,24 @@ class Babelian():
         print(self.routine_for_align('  - Meaning : ', meanings))
 
     def wrap_for_examples(self, item):
-        tags = [
-            '<strong class="keyword">',
-            '</strong>'
-        ]
         phrs_of_native = item['first']
         phrs_of_second = item['second']
         if phrs_of_native is not None:
-            self.print_examples_of_native(phrs_of_native, tags)
+            self.print_examples('  - Native  : ', 
+                                phrs_of_native, 
+                                # colors for replacing tags.
+                                self.CYAN, self.ENDC)
         if phrs_of_second is not None:
-            self.print_examples_of_second(phrs_of_second, tags)
+            self.print_examples('  - Second  : ', 
+                                phrs_of_second, 
+                                self.GREEN, self.ENDC)
 
-    def print_examples_of_native(self, phrs, tags):
-        native = phrs \
-            .replace(tags[0], self.CYAN) \
-            .replace(tags[1], self.ENDC)
-        print(self.routine_for_align('  - Native  : ', native))
-
-    def print_examples_of_second(self, phrs, tags):
-        second = phrs \
-            .replace(tags[0], self.GREEN) \
-            .replace(tags[1], self.ENDC)
-        print(self.routine_for_align('  - Second  : ', second))
+    def print_examples(self, str, phrs, *colors):
+        tags = ['<strong class="keyword">', '</strong>']
+        lang = phrs \
+                .replace(tags[0], colors[0]) \
+                .replace(tags[1], colors[1])
+        print(self.routine_for_align(str, lang))
 
     def routine_for_align(self, prefix_txt, item):
         ws = ''.join(['\n', ' ' * len(prefix_txt)])
