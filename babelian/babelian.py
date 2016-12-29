@@ -45,7 +45,7 @@ class Babelian():
     def test_for_charset(cls, args):
         babel = cls(args)
         try:
-            if babel.get_python_version() is not 3:
+            if python_version() is not 3:
                 raise Exception('This routine only allows on Python 3!.')
         except Exception as err:
             babel.print_err_msg(err)
@@ -115,9 +115,9 @@ class Babelian():
                         ])
 
     def to_unicode_url(self, words):
-        if self.get_python_version() is 2:
+        if python_version() is 2:
             return quote_plus(b' '.join(words))
-        elif self.get_python_version() is 3:
+        elif python_version() is 3:
             return quote_plus(' '.join(words))
         else:
             raise Exception('Unknown python version!')
@@ -162,10 +162,10 @@ class Babelian():
     def print_err_msg(self, err):
         print(colored_msg(COLOR.RED, str(err)))
 
-    def get_python_version(self):
-        import sys
-        return sys.version_info[0]
 
+def python_version():
+    import sys
+    return sys.version_info[0]
 
 def blank_line():
     print('')
