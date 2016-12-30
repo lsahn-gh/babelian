@@ -68,13 +68,13 @@ class Babelian():
 
     def print_phrases(self, res):
         if len(res) > 0:
-            for items in res[:self.print_limit]:
+            for item in res[:self.print_limit]:
                 blank_line()
-                if 'phrase' in items:
-                    self.wrap_for_phrase(items['phrase']['text'])
-                if 'meanings' in items:
-                    for item in items['meanings'][:self.print_limit]:
-                        self.wrap_for_meaning(item['text'])
+                if 'phrase' in item:
+                    self.wrap_for_phrase(item['phrase']['text'])
+                if 'meanings' in item:
+                    for mean in item['meanings'][:self.print_limit]:
+                        self.wrap_for_meaning(mean['text'])
         else:
             self.print_err_msg(' * Not found phrases.')
 
