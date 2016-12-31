@@ -30,16 +30,19 @@ class Babelian():
         self.src_lang = args.src_lang
         self.dest_lang = args.dest_lang
         self.print_limit = args.print_limit
-        self.with_example = args.we
-        self.only_example = args.op
+        self.with_example = args.ws
+        self.only_example = args.os
 
     @classmethod
     def search_word(cls, args):
-        cls(args).print_result()
-
-    @classmethod
-    def search_only_examples(cls, args):
-        cls(args).print_only_examples()
+        babel = cls(args)
+        try:
+            if babel.are_ws_os_used_at_the_same():
+                raise Exception('Dont use -ws, -os at the same time')
+        except Exception as err:
+            babel.print_err_msg(err)
+        else:
+            babel.print_result()
 
     @classmethod
     def test_for_charset(cls, args):
@@ -62,8 +65,9 @@ class Babelian():
         except Exception as err:
             self.print_err_msg(err)
         else:
-            self.print_phrases(data['tuc'])
-            if 'examples' in data:
+            if self.is_os_on() is False:
+                self.print_phrases(data['tuc'])
+            if self.is_ws_on() or self.is_os_on():
                 self.print_with_examples(data['examples'])
 
     def print_phrases(self, res):
@@ -76,15 +80,11 @@ class Babelian():
                     for mean in item['meanings'][:self.print_limit]:
                         self.wrap_for_meaning(mean['text'])
         else:
+            blank_line()
             self.print_err_msg(' * Not found phrases.')
-
-    def print_only_examples(self):
-        data = self.get_data()
-        if 'examples' in data:
-            self.print_with_examples(data['examples'])
+        blank_line()
 
     def print_with_examples(self, res):
-        blank_line()
         if len(res) > 0:
             print(colored_msg(COLOR.YELLOW, ' * Examples'))
             for items in res[:self.print_limit]:
@@ -92,6 +92,7 @@ class Babelian():
                 self.wrap_for_examples(items)
         else:
             self.print_err_msg(' * Not found examples.')
+        blank_line()
 
     def get_data(self):
         try:
@@ -102,17 +103,14 @@ class Babelian():
             return json.loads(response.read().decode('utf-8'))
 
     def make_url(self):
-        if self.only_example:
-            url = 'https://glosbe.com/gapi/tm?'
-        else:
-            url = 'https://glosbe.com/gapi/translate?'
-        return ''.join([url,
-                        'from={}&'.format(self.src_lang),
-                        'dest={}&'.format(self.dest_lang),
-                        'format=json&',
-                        'tm={}&'.format(self.with_example),
-                        'phrase={}'.format(self.to_unicode_url(self.words))
-                        ])
+        return ''.join([
+            'https://glosbe.com/gapi/translate?',
+            'from={}&'.format(self.src_lang),
+            'dest={}&'.format(self.dest_lang),
+            'format=json&',
+            'tm={}&'.format(self.is_ws_on() or self.is_os_on()),
+            'phrase={}'.format(self.to_unicode_url(self.words))
+        ])
 
     def to_unicode_url(self, words):
         if python_version() is 2:
@@ -158,6 +156,17 @@ class Babelian():
     def routine_for_align(self, prefix_txt, item):
         ws = ''.join(['\n', ' ' * len(prefix_txt)])
         return ''.join([prefix_txt, ws.join(wrap(item, self.WIDTH_OF_TERM))])
+
+    def are_ws_os_used_at_the_same(self):
+        return (self.is_ws_on() and self.is_os_on())
+
+    def is_ws_on(self):
+        """ return type : bool """
+        return self.with_example
+
+    def is_os_on(self):
+        """ return type : bool """
+        return self.only_example
 
     def print_err_msg(self, err):
         print(colored_msg(COLOR.RED, str(err)))
