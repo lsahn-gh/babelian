@@ -8,8 +8,8 @@ Thanks **glosbe**!
 ## Index
  - [Translations](#translations)
  - [Features](#features)
- - [Install Guide](#install-guide)
- - [Uninstall Guide](#uninstall-guide)
+ - [Install](#install)
+ - [Uninstall](#uninstall)
  - [Quick Guide](#quick-guide)
    - Options
      - [-s LANG](#-s-lang)
@@ -37,7 +37,7 @@ Thanks **glosbe**!
   - >= Python 2.7 (tested)
   - >= Python 3.4 (tested)
 
-## Install Guide
+## Install 
 ```shell
 $ git clone https://github.com/memnoth/babelian.git
 
@@ -47,7 +47,7 @@ $ [sudo] python setup.py install
 ```
 We recommend you install it on your Python Virtual Environment.
 
-## Uninstall Guide
+## Uninstall 
 ```shell
 $ [sudo] pip uninstall babelian
 ```
