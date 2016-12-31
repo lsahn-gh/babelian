@@ -28,7 +28,7 @@ def main():
 
                 Must use ISO 639-3 code with -f, -d.
             '''))
-    parser.add_argument('word', metavar='wrd', type=str, nargs='+',
+    parser.add_argument('word', metavar='word', type=str, nargs='+',
                         help='A word to search.')
     parser.add_argument('-s', type=str, default='eng', dest='src_lang',
                         help='A language code to search from. (default: eng)')
@@ -36,25 +36,18 @@ def main():
                         help='A language code to search to. (defualt: eng)')
     parser.add_argument('-n', type=int, default=3, dest='print_limit',
                         help='Print limitation. (default: 3)')
-    parser.add_argument('-we', action='store_true',
+    parser.add_argument('-ws', action='store_true',
                         help='Search with examples. (default: False)')
-    parser.add_argument('-op', action='store_true',
+    parser.add_argument('-os', action='store_true',
                         help='Search only examples. (default: False)')
     try:
         args = parser.parse_args()
     except Exception:
         print('Wrong options!')
         exit(0)
+    else:
+        Babelian.search_word(args)
 
-    try:
-        if args.op:
-            if args.we:
-                raise Exception(' Don\'t use -we with -op!')
-            Babelian.search_only_examples(args)
-        else:
-            Babelian.search_word(args)
-    except Exception as err:
-        print(err)
 
 if __name__ == '__main__':
     main()
