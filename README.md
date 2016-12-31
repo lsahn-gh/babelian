@@ -1,5 +1,5 @@
 # Babelian
-Babelian is a dictionary on 
+Babelian is a dictionary on command-line.  
 You can search some words/phrases/examples without running WebBrowser.  
 This program will help Developers/Students/Teachers, or who learns 2nd languages.  
 [*glosbe.com*](https://glosbe.com) provides the API of dictionary.  
@@ -46,10 +46,6 @@ $ cd babelian
 $ [sudo] python setup.py install
 ```
 We recommend you install it on your Python Virtual Environment.
-
-```shell
-$ wrds -h
-```
 
 ## Uninstall Guide
 ```shell
