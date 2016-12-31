@@ -1,7 +1,7 @@
 # Babelian
-Babelian is a dictionary of a Terminal.  
-You can search some words/phrases/examples without Browser.  
-This program will help Developers/Students/Teachers, or who is learning 2nd languages.  
+Babelian is a dictionary on 
+You can search some words/phrases/examples without running WebBrowser.  
+This program will help Developers/Students/Teachers, or who learns 2nd languages.  
 [*glosbe.com*](https://glosbe.com) provides the API of dictionary.  
 Thanks **glosbe**!
 
@@ -9,13 +9,14 @@ Thanks **glosbe**!
  - [Translations](#translations)
  - [Features](#features)
  - [Install Guide](#install-guide)
+ - [Uninstall Guide](#uninstall-guide)
  - [Quick Guide](#quick-guide)
    - Options
-     - [-f LANG](#-f-lang)
+     - [-s LANG](#-s-lang)
      - [-d LANG](#-d-lang)
      - [-n NUM](#-n-num)
-     - [-we](#-we)
-     - [-op](#-op)
+     - [-ws](#-ws)
+     - [-os](#-os)
  - [Advanced](#advanced)
  - [License](#license)
  - [API](#api)
@@ -24,38 +25,54 @@ Thanks **glosbe**!
 - [한국어](./README-ko.md)
 
 ## Features
-- Supports all languages of ISO-639-3(also 2) list.
+- Support all languages of ISO-639-3(also 2).
   - [ISO-639-3 codes.](https://en.wikipedia.org/wiki/List_of_ISO_639-3_codes)
-- Supports Unicode.
-- Supports Examples.
-  - Examples are very important when you are learning 2nd languages.
-- Supports systems.
+- Support Unicode.
+- Support Examples.
+  - Examples are very important when you learn 2nd languages.
+- Support systems.
   - Linux (tested)
   - Mac OS X
-- Supports version of Python.
+- Support version of Python.
   - >= Python 2.7 (tested)
   - >= Python 3.4 (tested)
 
 ## Install Guide
-- [English](./docs/INSTALL.md)
-- [한국어](./docs/INSTALL-ko.md)
+```shell
+$ git clone https://github.com/memnoth/babelian.git
+
+$ cd babelian
+
+$ [sudo] python setup.py install
+```
+We recommend you install it on your Python Virtual Environment.
+
+```shell
+$ wrds -h
+```
+
+## Uninstall Guide
+```shell
+$ [sudo] pip uninstall babelian
+```
+All babelian modules will be removed from you system.
 
 ## Quick-Guide
-Usage: td [-h] [-f LANG] [-d LANG] [-n NUM] [-we] [-op] wrd [wrd ...]  
+Usage: wrds [-h] [-s LANG] [-d LANG] [-n NUM] [-ws] [-os] word [word ...]  
 
 | args | default | description |
 |------|---------|-------------|
 | -h, --help | None | Show help message and exit. |
-| wrd | None | It must have a word at least. |
-| -f LANG | eng | ISO-639-3 code to search in `LANG` from. |
-| -d LANG | eng | ISO-639-3 code to search in `LANG` to. |
-| -n NUM | 3 | A number of print out, three results will print without -n |
-| -we | False | Search with examples. |
-| -op | False | Search only examples. |
+| word | None | It must be at least one **word**. |
+| -s LANG | eng | ISO-639-3 code for source. |
+| -d LANG | eng | ISO-639-3 code for destination. |
+| -n NUM | 3 | A number for print limitation. |
+| -ws | False | Search with examples. |
+| -os | False | Search only examples. |
 
-##### -f LANG
+##### -s LANG
 ```shell
-$ td 도서관 -f kor -n 1
+$ wrds -s kor -n 1 도서관
 
   - Phrase  : library
   - Meaning : institution which holds books etc.
@@ -65,7 +82,7 @@ $
 
 ##### -d LANG
 ```shell
-$ td library -d fra
+$ wrds -d fra library
 
   - Phrase  : bibliothèque
   - Meaning : collection of books
@@ -78,7 +95,7 @@ $
 
 ##### -n NUM
 ```shell
-$ td library -d kor -n 2
+$ wrds -d kor -n 2 library
 
   - Phrase  : 도서관
   - Meaning : institution which holds books etc.
@@ -92,14 +109,15 @@ $ td library -d kor -n 2
 $
 ```
 
-##### -we
+##### -ws
 ```shell
-$ td library -d ara -n 1 -we
+$ wrds -d ara -n 1 -ws library
 
   - Phrase  : مكتبة
   - Meaning : institution which holds books etc.
 
  * Examples
+
   - Native  : The Satya N. Nandan Library manages the Authority's
               specialized collection of reference and research materials
               focusing on matters relating to the law of the sea, ocean
@@ -111,11 +129,11 @@ $ td library -d ara -n 1 -we
 $
 ```
 
-##### -op
+##### -os
 ```shell
-$ td 도서관 -f kor -d tur -n 1 -op
-
+$ wrds -s kor -d tur -n 1 -os 도서관
  * Examples
+
   - Native  : 나는 도서관에서만 공부해요.
   - Second  : Yalnızca kütüphanede çalışırım.
 
@@ -123,19 +141,23 @@ $
 ```
 
 ## Advanced
-Using multi-words.
+Searching sentences.
 ```shell
-$ td "please to meet you" -d tur -we -n 1
+$ wrds -d tur -ws -n 1 please to meet you
+
  * Not found phrases.
+
  * Examples
-  - Native  : Pleased to meet you
-  - Second  : Çok memnun oldum
+
+  - Native  : Pleased to meet you.- Pleased to meet you
+  - Second  : Tanıştığımıza sevindim- Tanıştığımıza
+              sevindim
 
 $
 ```
 From Finnish to Russian.
 ```shell
-$ td kirjasto -f fin -d rus -n 1
+$ wrds -s fin -d rus -n 1 kirjasto 
 
   - Phrase  : библиотека
   - Meaning : Место, где хранятся книги и другие написанные материалы.
@@ -144,7 +166,7 @@ $
 ```
 From Turkish to Arabic.
 ```shell
-$ td kütüphane -f tur -d ara -n 1
+$ wrds -s tur -d ara -n 1 kütüphane 
 
   - Phrase  : مكتبة
 
@@ -152,7 +174,7 @@ $
 ```
 From Arabic to Deutsch.
 ```shell
-$ td مكتبة -f ara -d deu -n 1
+$ wrds -s ara -d deu -n 1 مكتبة  
 
   - Phrase  : Bibliothek
 
