@@ -7,37 +7,35 @@ Thanks **glosbe**!
 
 Youtube : [https://youtu.be/Za7eRZOowtw](https://youtu.be/Za7eRZOowtw)  
 
+- [한국어](./README-ko.md)  
+
 ## Index
- - [Translations](#translations)
  - [Features](#features)
+ - [Python](#python)
  - [Install](#install)
  - [Uninstall](#uninstall)
  - [Quick Guide](#quick-guide)
-   - Options
      - [-s LANG](#-s-lang)
      - [-d LANG](#-d-lang)
      - [-n NUM](#-n-num)
      - [-ws](#-ws)
      - [-os](#-os)
  - [Advanced](#advanced)
- - [License](#license)
  - [API](#api)
-
-## Translations
-- [한국어](./README-ko.md)
+ - [License](#license)
 
 ## Features
-- Support all languages of ISO-639-3(also 2).
-  - [ISO-639-3 codes.](https://en.wikipedia.org/wiki/List_of_ISO_639-3_codes)
+- Support all languages of [ISO-639-3](https://en.wikipedia.org/wiki/List_of_ISO_639-3_codes) code.
 - Support Unicode.
 - Support Examples.
   - Examples are very important when you learn 2nd languages.
-- Support systems.
+- Support Systems.
   - Linux (tested)
   - Mac OS X
-- Support version of Python.
-  - >= Python 2.7 (tested)
-  - >= Python 3.4 (tested)
+
+## Python
+- >= Python 2.7 (tested)
+- >= Python 3.4 (tested)
 
 ## Install 
 ```shell
@@ -179,8 +177,8 @@ $ wrds -s ara -d deu -n 1 مكتبة
 $
 ```
 
+# API
+[Glosbe](https://glosbe.com)
+
 # License
 The MIT License (MIT)
-
-# API
-[Glosbe](https://glosbe.com) provides.
