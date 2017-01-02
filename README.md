@@ -11,9 +11,11 @@ Thanks **glosbe**!
 
 Youtube : [https://youtu.be/Za7eRZOowtw](https://youtu.be/Za7eRZOowtw)  
 
+#### READMES
+- [한국어](./README-ko.md)  
+
 ## Index
  - [Features](#features)
- - [README](#readme)
  - [Python](#python)
  - [Install](#install)
  - [Uninstall](#uninstall)
@@ -36,8 +38,6 @@ Youtube : [https://youtu.be/Za7eRZOowtw](https://youtu.be/Za7eRZOowtw)
   - Linux (tested)
   - Mac OS X
 
-## README
-- [한국어](./README-ko.md)  
 
 ## Python
 - >= Python 2.7 (tested)
