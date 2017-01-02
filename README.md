@@ -1,3 +1,7 @@
+[![Python](https://img.shields.io/badge/python-2.7%2C%203.4-red.svg)](#)
+[![Platform](https://img.shields.io/badge/platform-osx%2C%20linux-lightgrey.svg)](#)
+[![license](https://img.shields.io/github/license/mashape/apistatus.svg)](#)
+
 # Babelian
 Babelian is a dictionary on command-line.  
 You can search some words/phrases/examples without running WebBrowser.  
