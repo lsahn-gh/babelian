@@ -51,13 +51,13 @@ $ cd babelian
 
 $ [sudo] python setup.py install
 ```
-We recommend you install it on your Python Virtual Environment.
+We recommend you install it on your Python virtual environment.
 
 # Uninstall 
 ```shell
 $ [sudo] pip uninstall babelian
 ```
-All babelian modules will be removed from you system.
+All babelian modules will be removed on your system.
 
 # Quick-Guide
 Usage: wrds [-h] [-s LANG] [-d LANG] [-n NUM] [-ws] [-os] word [word ...]  
@@ -143,7 +143,7 @@ $
 ```
 
 # Advanced
-Searching sentences.
+Search sentences.
 ```shell
 $ wrds -d tur -ws -n 1 please to meet you
 
@@ -157,7 +157,7 @@ $ wrds -d tur -ws -n 1 please to meet you
 
 $
 ```
-From Finnish to Russian.
+from Finnish to Russian.
 ```shell
 $ wrds -s fin -d rus -n 1 kirjasto 
 
@@ -166,7 +166,7 @@ $ wrds -s fin -d rus -n 1 kirjasto
 
 $
 ```
-From Turkish to Arabic.
+from Turkish to Arabic.
 ```shell
 $ wrds -s tur -d ara -n 1 kütüphane 
 
@@ -174,7 +174,7 @@ $ wrds -s tur -d ara -n 1 kütüphane
 
 $
 ```
-From Arabic to Deutsch.
+from Arabic to Deutsch.
 ```shell
 $ wrds -s ara -d deu -n 1 مكتبة  
 
