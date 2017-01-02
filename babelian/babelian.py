@@ -159,14 +159,27 @@ class Babelian():
         return ''.join([prefix_txt, ws.join(wrap(item, self.WIDTH_OF_TERM))])
 
     def are_ws_os_used_at_the_same(self):
+        """
+        check that -ws, -os are used at the same time.
+
+        :return bool: return True, if both are on at the same.
+        """
         return (self.is_ws_on() and self.is_os_on())
 
     def is_ws_on(self):
-        """ return type : bool """
+        """ 
+        Check -ws option.
+        
+        :return bool: return True, if -ws option is on.
+        """
         return self.with_example
 
     def is_os_on(self):
-        """ return type : bool """
+        """
+        Check -os option.
+        
+        :return bool: return True, if -os option is on.
+        """
         return self.only_example
 
     def print_err_msg(self, err):
