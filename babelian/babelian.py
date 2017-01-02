@@ -91,6 +91,7 @@ class Babelian():
                 blank_line()
                 self.wrap_for_examples(items)
         else:
+            blank_line()
             self.print_err_msg(' * Not found examples.')
         blank_line()
 
