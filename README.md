@@ -30,7 +30,7 @@ Youtube : [https://youtu.be/Za7eRZOowtw](https://youtu.be/Za7eRZOowtw)
  - [License](#license)
 
 # Features
-- Support all languages of [ISO-639-3](https://en.wikipedia.org/wiki/List_of_ISO_639-3_codes) code.
+- Support [ISO-639-3](https://en.wikipedia.org/wiki/List_of_ISO_639-3_codes) codes. 
 - Support Unicode.
 - Support Examples.
   - Examples are very important when you learn 2nd languages.
