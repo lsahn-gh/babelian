@@ -5,6 +5,8 @@ This program will help Developers/Students/Teachers, or who learns 2nd languages
 [*glosbe.com*](https://glosbe.com) provides the API of dictionary.  
 Thanks **glosbe**!
 
+Youtube : [https://youtu.be/Za7eRZOowtw](https://youtu.be/Za7eRZOowtw)  
+
 ## Index
  - [Translations](#translations)
  - [Features](#features)
