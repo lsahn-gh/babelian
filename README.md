@@ -14,7 +14,7 @@ Youtube : [https://youtu.be/Za7eRZOowtw](https://youtu.be/Za7eRZOowtw)
 ##### READMES
 - [한국어](./README-ko.md)  
 
-## Index
+# Index
  - [Features](#features)
  - [Python](#python)
  - [Install](#install)
@@ -29,7 +29,7 @@ Youtube : [https://youtu.be/Za7eRZOowtw](https://youtu.be/Za7eRZOowtw)
  - [API](#api)
  - [License](#license)
 
-## Features
+# Features
 - Support all languages of [ISO-639-3](https://en.wikipedia.org/wiki/List_of_ISO_639-3_codes) code.
 - Support Unicode.
 - Support Examples.
@@ -39,11 +39,11 @@ Youtube : [https://youtu.be/Za7eRZOowtw](https://youtu.be/Za7eRZOowtw)
   - Mac OS X
 
 
-## Python
+# Python
 - >= Python 2.7 (tested)
 - >= Python 3.4 (tested)
 
-## Install 
+# Install 
 ```shell
 $ git clone https://github.com/memnoth/babelian.git
 
@@ -53,13 +53,13 @@ $ [sudo] python setup.py install
 ```
 We recommend you install it on your Python Virtual Environment.
 
-## Uninstall 
+# Uninstall 
 ```shell
 $ [sudo] pip uninstall babelian
 ```
 All babelian modules will be removed from you system.
 
-## Quick-Guide
+# Quick-Guide
 Usage: wrds [-h] [-s LANG] [-d LANG] [-n NUM] [-ws] [-os] word [word ...]  
 
 | args | default | description |
@@ -72,7 +72,7 @@ Usage: wrds [-h] [-s LANG] [-d LANG] [-n NUM] [-ws] [-os] word [word ...]
 | -ws | False | Search with examples. |
 | -os | False | Search only examples. |
 
-##### -s LANG
+#### -s LANG
 ```shell
 $ wrds -s kor -n 1 도서관
 
@@ -82,7 +82,7 @@ $ wrds -s kor -n 1 도서관
 $
 ```
 
-##### -d LANG
+#### -d LANG
 ```shell
 $ wrds -d fra library
 
@@ -95,7 +95,7 @@ $ wrds -d fra library
 $
 ```
 
-##### -n NUM
+#### -n NUM
 ```shell
 $ wrds -d kor -n 2 library
 
@@ -111,7 +111,7 @@ $ wrds -d kor -n 2 library
 $
 ```
 
-##### -ws
+#### -ws
 ```shell
 $ wrds -d ara -n 1 -ws library
 
@@ -131,7 +131,7 @@ $ wrds -d ara -n 1 -ws library
 $
 ```
 
-##### -os
+#### -os
 ```shell
 $ wrds -s kor -d tur -n 1 -os 도서관
  * Examples
@@ -142,7 +142,7 @@ $ wrds -s kor -d tur -n 1 -os 도서관
 $
 ```
 
-## Advanced
+# Advanced
 Searching sentences.
 ```shell
 $ wrds -d tur -ws -n 1 please to meet you
