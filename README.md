@@ -4,11 +4,11 @@
 
 # Babelian
 You generally use a web-browser to search some words.  
-But, have you thought that too many steps for one word?.
+But, have you thought that there are too many steps for one word?.  
 The steps are   
 - Run a web-browser.
-- Click some links til you get a page to search.
-- Type some words.
+- Click some links until you get a page to search.
+- Type some words.  
 Here is a solution for you can search words easily.  
 
 Babelian is a dictionary on command-line.  
