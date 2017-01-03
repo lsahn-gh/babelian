@@ -2,12 +2,10 @@
 Babelian
 --------
 
-Babelian is a dictionary of a Terminal.
-You can search some words/phrases/examples without Browser.
+Babelian is a dictionary on command-line.
+You can search some words/phrases/examples without running WebBrowser.
 This program will help Developers/Students/Teachers,
-or who is learning 2nd languages.
-glosbe provides the API of dictionary.
-Thanks **glosbe**!
+or who learns 2nd languages.
 
 Links
 `````
@@ -33,7 +31,7 @@ setup(
     license='MIT',
     author='Yi Soo, (Jeff) An',
     author_email='yisooan@gmail.com',
-    description='Babelian is a dictionary of a Terminal.',
+    description='Babelian is a dictionary on command-line.',
     long_description=__doc__,
     zip_safe=False,
     include_package_data=True,

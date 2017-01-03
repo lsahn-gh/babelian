@@ -16,11 +16,10 @@ def main():
     parser = ArgumentParser(
         formatter_class=RawDescriptionHelpFormatter,
         description=textwrap.dedent('''\
-            Babelian is a dictionary on command line.
-            You can search some words/phrases/examples without Browser.
+            Babelian is a dictionary on command-line.
+            You can search some words/phrases/examples without running WebBrowser.
             This program will help Developers/Students/Teachers,
-            or who is learning 2nd languages.
-            'glosbe.com' provides the API of dictionary.
+            or who learns 2nd languages.
 
                 Author.
                  - Yi Soo, (Jeff) An

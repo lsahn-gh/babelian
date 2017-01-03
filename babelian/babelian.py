@@ -1,12 +1,10 @@
 """
 Copyright (c) Babelian 2015-2016, Yi Soo, (Jeff) An
 
-Babelian is a dictionary of a Terminal.
-You can search some words/phrases/examples without Browser.
+Babelian is a dictionary on command-line.
+You can search some words/phrases/examples without running WebBrowser.
 This program will help Developers/Students/Teachers,
-or who is learning 2nd languages.
-glosbe provides the API of dictionary.
-Thanks **glosbe**!
+or who learns 2nd languages.
 """
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals, with_statement
