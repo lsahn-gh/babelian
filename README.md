@@ -3,6 +3,14 @@
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg)](#)
 
 # Babelian
+You generally use a web-browser to search some words.  
+But, have you thought that too many steps for one word?.
+The steps are   
+- Run a web-browser.
+- Click some links til you get a page to search.
+- Type some words.
+Here is a solution for you can search words easily.  
+
 Babelian is a dictionary on command-line.  
 You can search some words/phrases/examples without running WebBrowser.  
 This program will help Developers/Students/Teachers, or who learns 2nd languages.  
