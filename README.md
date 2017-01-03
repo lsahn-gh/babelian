@@ -15,13 +15,8 @@ Here is a solution for you can search words easily.
 Babelian is a dictionary on command-line.  
 You can search some words/phrases/examples without running WebBrowser.  
 This program will help Developers/Students/Teachers, or who learns 2nd languages.  
-[*glosbe.com*](https://glosbe.com) provides the API of dictionary.  
-Thanks **glosbe**!
 
 Youtube : [https://youtu.be/Za7eRZOowtw](https://youtu.be/Za7eRZOowtw)  
-
-##### READMES
-- [한국어](./README-ko.md)  
 
 # Index
  - [Features](#features)
@@ -193,7 +188,8 @@ $
 ```
 
 # API
-[Glosbe](https://glosbe.com)
+[Glosbe](https://glosbe.com) provides the API.  
+Thanks to **Glosbe**!.    
 
 # License
 The MIT License (MIT)
