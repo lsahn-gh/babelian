@@ -3,5 +3,4 @@ build/
 dist/
 *.egg-info/
 .idea/
-*.sublime-project
-*.sublime-workspace
+rm_setup.sh

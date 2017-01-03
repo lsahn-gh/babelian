@@ -1,7 +1,7 @@
 """
-Copyright (c) Babelian 2015, Hyun Jun (Cryptos) An
+Copyright (c) Babelian 2015-2016, Yi Soo, (Jeff) An
 
-The Babelian is a dictionary of a Terminal.
+Babelian is a dictionary of a Terminal.
 You can search some words/phrases/examples without Browser.
 This program will help Developers/Students/Teachers,
 or who is learning 2nd languages.
@@ -18,44 +18,37 @@ except ImportError:
     from urllib.parse import quote_plus
 import json
 from textwrap import wrap
+from .color import COLOR
 
 
 class Babelian():
-
-    RED = '\033[91m'
-    GREEN = '\033[92m'
-    YELLOW = '\033[93m'
-    BLUE = '\033[94m'
-    PURPLE = '\033[95m'
-    CYAN = '\033[96m'
-    ENDC = '\033[0m'
     DASH = 52
     WIDTH_OF_TERM = 60
 
     def __init__(self, args):
         self.words = args.word
-        self.from_lang = args.from_lang
+        self.src_lang = args.src_lang
         self.dest_lang = args.dest_lang
-        self.num_for_out = args.num_for_out
-        self.with_example = args.we
-        self.only_example = args.op
-        self.get_python_version()
+        self.print_limit = args.print_limit
+        self.with_example = args.ws
+        self.only_example = args.os
 
     @classmethod
     def search_word(cls, args):
         babel = cls(args)
-        babel.print_result()
-
-    @classmethod
-    def search_only_examples(cls, args):
-        babel = cls(args)
-        babel.print_only_examples()
+        try:
+            if babel.are_ws_os_used_at_the_same():
+                raise Exception('Dont use -ws, -os at the same time')
+        except Exception as err:
+            babel.print_err_msg(err)
+        else:
+            babel.print_result()
 
     @classmethod
     def test_for_charset(cls, args):
         babel = cls(args)
         try:
-            if babel.version is not 3:
+            if python_version() is not 3:
                 raise Exception('This routine only allows on Python 3!.')
         except Exception as err:
             babel.print_err_msg(err)
@@ -63,40 +56,6 @@ class Babelian():
             f = urlopen(babel.make_url())
             charset = f.info().get_param('charset', 'utf-8')
             print(charset)
-
-    def get_data(self):
-        return self.get_json()
-
-    def get_json(self):
-        try:
-            url = self.make_url()
-            response = urlopen(url)
-        except Exception(' Can\'t load datas, try it again later.') as err:
-            self.print_err_msg(err)
-        else:
-            return json.loads(response.read().decode('utf-8'))
-
-    def make_url(self):
-        url = None
-        if self.only_example:
-            url = 'https://glosbe.com/gapi/tm?'
-        else:
-            url = 'https://glosbe.com/gapi/translate?'
-        return ''.join([url,
-                        'from={}&'.format(self.from_lang),
-                        'dest={}&'.format(self.dest_lang),
-                        'format=json&',
-                        'tm={}&'.format(self.with_example),
-                        'phrase={}'.format(self.to_unicode_url(self.words))
-                        ])
-
-    def to_unicode_url(self, words):
-        if self.version is 2:
-            return quote_plus(b' '.join(words))
-        elif self.version is 3:
-            return quote_plus(' '.join(words))
-        else:
-            raise Exception('Unknown python version!')
 
     def print_result(self):
         data = self.get_data()
@@ -106,26 +65,64 @@ class Babelian():
         except Exception as err:
             self.print_err_msg(err)
         else:
-            self.print_phrases(data['tuc'])
-            if 'examples' in data:
+            if self.is_os_on() is False:
+                self.print_phrases(data['tuc'])
+            if self.is_ws_on() or self.is_os_on():
                 self.print_with_examples(data['examples'])
 
     def print_phrases(self, res):
-        if not len(res) > 0:
-            self.print_err_msg(' * Not found phrases.')
+        if len(res) > 0:
+            for item in res[:self.print_limit]:
+                blank_line()
+                if 'phrase' in item:
+                    self.wrap_for_phrase(item['phrase']['text'])
+                if 'meanings' in item:
+                    for mean in item['meanings'][:self.print_limit]:
+                        self.wrap_for_meaning(mean['text'])
         else:
-            print('')
-            for items in res[:self.num_for_out]:
-                if 'phrase' in items:
-                    self.wrap_for_phrase(items['phrase']['text'])
-                if 'meanings' in items:
-                    for item in items['meanings'][:self.num_for_out]:
-                        self.wrap_for_meaning(item['text'])
-                print('')
+            blank_line()
+            self.print_err_msg(' * Not found phrases.')
+        blank_line()
+
+    def print_with_examples(self, res):
+        if len(res) > 0:
+            print(colored_msg(COLOR.YELLOW, ' * Examples'))
+            for items in res[:self.print_limit]:
+                blank_line()
+                self.wrap_for_examples(items)
+        else:
+            blank_line()
+            self.print_err_msg(' * Not found examples.')
+        blank_line()
+
+    def get_data(self):
+        try:
+            response = urlopen(self.make_url())
+        except Exception(' Can\'t load datas, try it again later.') as err:
+            self.print_err_msg(err)
+        else:
+            return json.loads(response.read().decode('utf-8'))
+
+    def make_url(self):
+        return ''.join([
+            'https://glosbe.com/gapi/translate?',
+            'from={}&'.format(self.src_lang),
+            'dest={}&'.format(self.dest_lang),
+            'format=json&',
+            'tm={}&'.format(self.is_ws_on() or self.is_os_on()),
+            'phrase={}'.format(self.to_unicode_url(self.words))
+        ])
+
+    def to_unicode_url(self, words):
+        if python_version() is 2:
+            return quote_plus(b' '.join(words))
+        elif python_version() is 3:
+            return quote_plus(' '.join(words))
+        else:
+            raise Exception('Unknown python version!')
 
     def wrap_for_phrase(self, item):
-        text = '  - Phrase  : '
-        print(self.routine_for_align(text, item))
+        print(self.routine_for_align('  - Phrase  : ', item))
 
     def wrap_for_meaning(self, item):
         try:
@@ -135,58 +132,66 @@ class Babelian():
         except:
             # Python 3
             import html
-        # Decode HTML escape characters.
-        meanings = html.unescape(item)
-        text = '  - Meaning : '
-        print(self.routine_for_align(text, meanings))
-
-    def print_only_examples(self):
-        data = self.get_data()
-        if 'examples' in data:
-            self.print_with_examples(data['examples'])
-
-    def print_with_examples(self, res):
-        if not len(res) > 0:
-            self.print_err_msg(' * Not found examples.')
-        else:
-            print(''.join([self.YELLOW, ' * Examples', self.ENDC]))
-            for items in res[:self.num_for_out]:
-                self.wrap_for_examples(items)
-                print('')
+        print(self.routine_for_align('  - Meaning : ', html.unescape(item)))
 
     def wrap_for_examples(self, item):
-        tags = [
-            '<strong class="keyword">',
-            '</strong>'
-        ]
         phrs_of_native = item['first']
         phrs_of_second = item['second']
         if phrs_of_native is not None:
-            self.print_examples_of_native(phrs_of_native, tags)
+            self.print_examples('  - Native  : ', 
+                                phrs_of_native, 
+                                # colors for replacing tags.
+                                COLOR.CYAN, COLOR.ENDC)
         if phrs_of_second is not None:
-            self.print_examples_of_second(phrs_of_second, tags)
+            self.print_examples('  - Second  : ', 
+                                phrs_of_second, 
+                                COLOR.GREEN, COLOR.ENDC)
 
-    def print_examples_of_native(self, phrs, tags):
-        native = phrs \
-            .replace(tags[0], self.CYAN) \
-            .replace(tags[1], self.ENDC)
-        text = '  - Native  : '
-        print(self.routine_for_align(text, native))
-
-    def print_examples_of_second(self, phrs, tags):
-        second = phrs \
-            .replace(tags[0], self.GREEN) \
-            .replace(tags[1], self.ENDC)
-        text = '  - Second  : '
-        print(self.routine_for_align(text, second))
+    def print_examples(self, str, phrs, *colors):
+        tags = ['<strong class="keyword">', '</strong>']
+        lang = phrs \
+                .replace(tags[0], colors[0]) \
+                .replace(tags[1], colors[1])
+        print(self.routine_for_align(str, lang))
 
     def routine_for_align(self, prefix_txt, item):
         ws = ''.join(['\n', ' ' * len(prefix_txt)])
         return ''.join([prefix_txt, ws.join(wrap(item, self.WIDTH_OF_TERM))])
 
-    def print_err_msg(self, err):
-        print(''.join([self.RED, str(err), self.ENDC]))
+    def are_ws_os_used_at_the_same(self):
+        """
+        check that -ws, -os are used at the same time.
 
-    def get_python_version(self):
-        import sys
-        self.version = sys.version_info[0]
+        :return bool: return True, if both are on at the same.
+        """
+        return (self.is_ws_on() and self.is_os_on())
+
+    def is_ws_on(self):
+        """ 
+        Check -ws option.
+        
+        :return bool: return True, if -ws option is on.
+        """
+        return self.with_example
+
+    def is_os_on(self):
+        """
+        Check -os option.
+        
+        :return bool: return True, if -os option is on.
+        """
+        return self.only_example
+
+    def print_err_msg(self, err):
+        print(colored_msg(COLOR.RED, str(err)))
+
+
+def python_version():
+    import sys
+    return sys.version_info[0]
+
+def blank_line():
+    print('')
+
+def colored_msg(color, str):
+    return ''.join([color, str, COLOR.ENDC])
