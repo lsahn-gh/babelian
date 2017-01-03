@@ -37,7 +37,6 @@ Youtube : [https://youtu.be/Za7eRZOowtw](https://youtu.be/Za7eRZOowtw)
 - Search words.
 - Search examples.
   - Examples are very important when you learn 2nd languages.
-
 - Support [ISO-639-3](https://en.wikipedia.org/wiki/List_of_ISO_639-3_codes) codes. 
 - Support unicode.
 - Support systems.
