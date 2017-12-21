@@ -3,18 +3,18 @@
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg)](#)
 
 # Babelian
-You generally use a web-browser to search some words.  
-But, have you thought that there are too many steps for one word?.  
-The steps are   
-- Run a web-browser.
-- Click some links until you get a page to search.
-- Type some words.  
+Language learners typically use a web-browser to look for the definition of words.  
+But don't you think that the process of looking up is so pricky?!  
+For example, the steps are,
+- Open a web-browser.
+- Click some links until you get a online dictionary  
+- Type some words, then look for words.  
 
-Here is a solution for you can search words easily.  
+This is a solution for looking up words quickly and easily!  
 
 Babelian is a dictionary on command-line.  
-You can search some words/phrases/examples without running WebBrowser.  
-This program will help Developers/Students/Teachers, or who learns 2nd languages.  
+You can look up words/phrases/examples without web-browsers.  
+This will help Developers/Students/Teachers, or 2nd languages learners.  
 
 Youtube : [https://youtu.be/Za7eRZOowtw](https://youtu.be/Za7eRZOowtw)  
 
@@ -45,8 +45,8 @@ Youtube : [https://youtu.be/Za7eRZOowtw](https://youtu.be/Za7eRZOowtw)
 
 
 # Python
-- >= Python 2.7 (tested)
-- >= Python 3.4 (tested)
+- Great than or equal Python 2.7 (tested)
+- Great than or equal Python 3.4 (tested)
 
 # Install 
 ```shell
@@ -56,13 +56,13 @@ $ cd babelian
 
 $ [sudo] python setup.py install
 ```
-We recommend you install it on your Python virtual environment.
+Recommend to install it in Python Virtual Environment.
 
 # Uninstall 
 ```shell
 $ [sudo] pip uninstall babelian
 ```
-All babelian modules will be removed on your system.
+All babelian modules will be removed from your system.
 
 # Quick-Guide
 Usage: wrds [-h] [-s LANG] [-d LANG] [-n NUM] [-ws] [-os] word [word ...]  
