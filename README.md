@@ -17,6 +17,7 @@ You can look up words/phrases/examples without web-browsers.
 This will help Developers/Students/Teachers, or 2nd languages learners.  
 
 Youtube : [https://youtu.be/Za7eRZOowtw](https://youtu.be/Za7eRZOowtw)  
+Github  : [https://github.com/memnoth/babelian](https://github.com/memnoth/babelian)
 
 # Index
  - [Features](#features)
@@ -194,3 +195,6 @@ Thanks to **Glosbe**!.
 
 # License
 The MIT License (MIT)
+
+# Author
+Yi-Soo Thomas An
